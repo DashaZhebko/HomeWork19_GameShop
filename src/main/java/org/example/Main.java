@@ -46,7 +46,7 @@ public class Main {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error. Details: " +e.getMessage());
         }
     }
 }

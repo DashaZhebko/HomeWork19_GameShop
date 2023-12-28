@@ -26,7 +26,7 @@ class UserServiceTest {
     }
 
     @Test
-    void findUserIsPresent() {
+    void testIsFindUserPresent() {
         String nickname = "dasha1";
         String password = "qwerty";
 
@@ -38,7 +38,7 @@ class UserServiceTest {
         assertEquals(password, expectedPassword);
     }
     @Test
-    void findUserIsNonAvailable() {
+    void testFindUserIsNonAvailable() {
         String nickname = "dasha";
         String password = "qwerty";
 
@@ -59,14 +59,14 @@ class UserServiceTest {
     }
 
     @Test
-    void nicknameIsPresent() {
+    void testIsNicknamePresent() {
         String nickname = "dasha1";
         boolean expected = usersService.nicknameIsPresent(nickname);
         assertTrue(expected);
     }
 
     @Test
-    void nicknameNotPresent() {
+    void testNicknameNotPresent() {
         String nickname = "dasha";
         boolean expected = usersService.nicknameIsPresent(nickname);
         assertFalse(expected);
