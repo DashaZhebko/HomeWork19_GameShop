@@ -23,7 +23,7 @@ public class GameServiceManager {
         this.userContext = UserContext.getInstance();
     }
 
-    public void getGamesMenu() {
+    public void showGamesMenu() {
         games = this.gameService.getAllGames();
         System.out.println(
                 "1. Show all games" + '\n' +
@@ -33,17 +33,17 @@ public class GameServiceManager {
         switch (scanner.nextInt()) {
             case 1:
                 showAllGames();
-                getGamesMenu();
+                showGamesMenu();
                 break;
             case 2:
                 makePayment();
-                getGamesMenu();
+                showGamesMenu();
                 break;
             case 3:
                 new MainServiceMenu(this.scanner, this.userService, this.gameService).getMainMenu();
                 break;
             default:
-                getGamesMenu();
+                showGamesMenu();
                 break;
         }
     }
@@ -56,7 +56,7 @@ public class GameServiceManager {
     }
 
     private boolean purchaseIsAvailable(int gameId) {
-        if (gameIsPresent(gameId)) {
+        if (!isGameAbsent(gameId)) {
             int projectedBalance = getProjectedBalance(gameId);
             if (projectedBalance < 0) {
                 System.out.println("Insufficient funds in the account. You are" + projectedBalance + "short" +
@@ -67,7 +67,7 @@ public class GameServiceManager {
         return true;
     }
 
-    private boolean gameIsPresent(int gameId) {
+    private boolean isGameAbsent(int gameId) {
         return games.get(gameId) == null;
     }
 

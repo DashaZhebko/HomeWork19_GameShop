@@ -20,20 +20,20 @@ public class Main {
                 UserService userService = new UserService(new UserRepositoryImpl(connection));
                 GameService gameService = new GameService(new GameRepositoryImpl(connection));
 
-                UserServiceManager management = new UserServiceManager(userService, scanner);
+                UserServiceManager userServiceManager = new UserServiceManager(userService, scanner);
 
                 System.out.println("Hello, are you registered?(y/n) ");
                 String answer = scanner.nextLine();
 
                 if ("y".equals(answer)) {
-                    management.getAuthorize();
+                    userServiceManager.makeAuthorize();
                     if (userContext.getUser().getNickname() == null) {
-                        management.getRegistration();
-                        management.getAuthorize();
+                        userServiceManager.makeRegistration();
+                        userServiceManager.makeAuthorize();
                     }
                 } else {
-                    management.getRegistration();
-                    management.getAuthorize();
+                    userServiceManager.makeRegistration();
+                    userServiceManager.makeAuthorize();
                 }
 
                 if (userContext.getUser().getNickname() == null) {
@@ -48,6 +48,5 @@ public class Main {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

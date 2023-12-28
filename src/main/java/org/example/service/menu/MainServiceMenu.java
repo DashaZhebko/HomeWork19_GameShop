@@ -25,7 +25,7 @@ public class MainServiceMenu {
                         "3. Exit "
         );
         switch (scanner.nextInt()) {
-            case 1:new GameServiceManager(this.scanner, this.userService, this.gameService).getGamesMenu();
+            case 1:new GameServiceManager(this.scanner, this.userService, this.gameService).showGamesMenu();
                 break;
             case 2:
                  new AccountServiceManager(this.scanner, this.userService).updateAccount();

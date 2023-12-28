@@ -3,7 +3,11 @@ package org.example;
 import org.example.model.User;
 
 public class UserContext {
+
     private static UserContext context;
+
+    private User user;
+
     public static UserContext getInstance() {
         if (context == null) {
             context = new UserContext();
@@ -11,10 +15,8 @@ public class UserContext {
         return context;
     }
 
-    private User user;
-
     public User getUser() {
-        if (user==null){
+        if (user == null) {
             user = User.builder().build();
         }
         return user;
